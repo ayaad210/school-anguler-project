@@ -1,0 +1,87 @@
+
+
+<div class="card-center">
+    </div>
+    
+    <!-- <div >
+        <button type="button" class="btn btn-outline-primary float-left m-2" data-toggle="modal" data-target="#exampleModal"
+        (click)=onaddclick()  data-backdrop="static" data-keybourd="false"> 
+            Add new Group
+          </button>
+          
+        </div> -->
+
+        <div class="row">
+           
+        
+            
+                <div class="card text-dark bg-default mb-3  col-lg-4" *ngFor="let item of List"   >
+                    <div class="card-header">
+                       <h3 class="success">{{item.sTask.name}}</h3>
+                      
+                       <h3 class="success">{{item.datetime}}</h3>
+                       <h3 class="success">{{item.student.user.name}}</h3>
+
+                       
+                    </div>
+        
+                    <div class="card-body ">
+                      
+                    
+            <button class="btn btn-primary" (click)="OnclickEdit(item)"data-toggle="modal" data-target="#exampleModal"
+            data-backdrop="static" data-keybourd="false">   set degree </button>
+            
+        
+            <button class="btn btn-danger"  (click)="OnclickDelete(item)">  Delete  </button>
+     
+                    </div>
+                </div>
+                    
+            
+            
+            
+            
+            
+                </div>
+        
+        
+        
+        
+                
+        
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centerd modal-xl" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                  (click)="closeClick()"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <app-answer-add-edit *ngIf="ActivateAddEditEmpComp"  [taskid]="taskid" [selectedOne]="selectedOne" ></app-answer-add-edit>
+                </div>
+             
+              </div>
+            </div>
+          </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

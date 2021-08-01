@@ -1,0 +1,98 @@
+
+
+
+<div class="row">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-primary float-left m-2" data-toggle="modal" data-target="#exampleModal"
+(click)=onaddclick()  data-backdrop="static" data-keybourd="false"> 
+<!-- عشان تتاكد انة لو ضغط برة البوب اب ميقفلهشاdata-backdrop="static" data-keybourd="false" -->
+    Add new Semester
+  </button>
+  
+</div>
+<div class="row">
+      
+        <div class="card text-dark bg-default mb-3  col-lg-4" *ngFor="let item of semesters"   >
+            <div class="card-header">
+               <h3 class="success">{{item.semesterName}}</h3>
+              
+               
+               
+            </div>
+
+            <div class="card-body ">
+              <span class="h6"> start Date: </span>{{item.startDate}}
+              <br>
+               <span class="h6">EndDate: </span>{{item.endDate}}
+            <hr>
+
+    <button class="btn btn-primary" *ngIf="role=='admin'" (click)="OnclickEdit(item)"data-toggle="modal" data-target="#exampleModal"
+    data-backdrop="static" data-keybourd="false">   Edit </button>
+    
+
+    <button *ngIf="role=='admin'" class="btn btn-danger"  (click)="OnclickDelete(item)">  Delete  </button>
+    <button *ngIf="role=='admin'"  class="btn btn-outline-secondary"  (click)="osubjectsClick(item)">  Subjects  </button>
+
+
+
+    <button class=" btn btn-outline-info" routerLink='/grouplist' [queryParams]="{semesterid:item.id,semestername:item.semesterName}" >  manage Groups  </button>
+
+            </div>
+        </div>
+    
+    
+    
+    
+    
+        </div>
+
+
+
+
+        
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centerd modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="closeClick()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-semester-add-edit *ngIf="ActivateAddEditEmpComp" [selectedsemester]="selectedsemester" ></app-semester-add-edit>
+        </div>
+     
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+<div class="card card border  border-info"  style="z-index: 2;position: fixed; top: 20%;width: 80%; padding: 1%; right: 10%; justify-content: center ; background-color:whitesmoke;"     *ngIf="activatesubjectscomponet" tabindex="-1">
+  <button type="button" (click)="closesemestersubjects()" class="close" data-dismiss="modal" aria-label="Close"
+  
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h3  >semester Subjects</h3>
+
+<app-subjects-of-semester *ngIf="activatesubjectscomponet" [semesterid]="selectedsemester.id"> </app-subjects-of-semester>
+
+</div>
+
+
+
+
+
+
+
+

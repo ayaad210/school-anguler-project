@@ -1,0 +1,51 @@
+<div class="row">
+
+    <div class="col-lg-6 col-sm-12">
+        <div class="row">
+            <div class="col-lg-6 ">
+
+        <select id="allsubjects" class="form-control" [(ngModel)]="selctedsubject" name="allsubjects">
+            <option > select</option>
+            <option  *ngFor="let item of AllSubjectist" [ngValue]="item.id"> 
+                 {{item.name}}
+            </option>
+            
+            
+                </select>
+
+            </div>
+            <div class="col lg-6 " > 
+            <button class="btn btn-primary" (click)="onaddclick()">+</button>
+                </div>
+
+
+
+
+
+        </div>
+    </div>
+<div class="col col-lg-6 col-sm-12 ">
+    <table class="table table-bordered border-primary">
+        <thead>
+    <th> subject name</th>
+    <th> options</th>
+
+        </thead>
+        
+    
+    
+        <tbody>
+            <tr *ngFor="let item of subjects">
+    <td > {{item.name}}</td>
+    <td>  <button class="btn btn-danger" (click)="ondeleteclick(item.id)">-</button>      </td>
+            </tr>
+        </tbody>
+
+      </table>
+  
+
+</div>
+
+
+    
+</div>

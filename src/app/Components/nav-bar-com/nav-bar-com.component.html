@@ -1,0 +1,62 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+   
+    <ul class="navbar-nav"   *ngIf="(LoginStatus$ | async) as LoginStatus">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="" >Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="role=='admin'||role=='teachers'" routerLink="semesterslist"> semesters</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="role=='admin'||role=='students'" routerLink="subjectlist">subjects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="role=='admin'" routerLink="Teacherlist">Teachers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="role=='admin'" routerLink="StudentList">Students</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" *ngIf="role=='Parents'" routerLink="parentstudents">your children</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="role=='admin'" routerLink="parentlist">parents</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()"  >Logout</a>
+      </li>
+    </ul>
+      <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="login"  *ngIf="!(LoginStatus$ | async) as LoginStatus"  >Login</a>
+      </li>
+     
+       <li class="nav-item">
+        <a class="nav-link" routerLink="admin"  *ngIf="role=='admin'"  >          <a class="dropdown-item"  >add  Admin</a>
+      </a>
+      </li>
+      <li  class="nav-item dropdown"  *ngIf="!(LoginStatus$ | async)" >
+        <a class="nav-link dropdown-toggle"   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Register
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="Studentaddedit" href="#">Register as Student</a>
+          <a class="dropdown-item"  routerLink="Teacheraddedit"  >Register as Teacher</a>
+          <a class="dropdown-item"  routerLink="parentAddedit">register as  else parent</a>
+
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="navbar-brand justify-content-center">
+
+    <h2 style="color: white;" class="text-center  justify-center">School Angular Project</h2>
+
+  </div>
+</nav>

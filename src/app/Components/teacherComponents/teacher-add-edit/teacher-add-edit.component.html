@@ -1,0 +1,111 @@
+
+
+
+<section class="vh-100" style="background-color:whitesmoke;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-9 ;">
+
+        <h1 class="text-dark mb-4 ">Register As Teacher</h1>
+
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
+            
+<form #f="ngForm" class="form-horizontal" (ngSubmit)="onsupmit(f)" >
+    <div class="form-group">
+      <label class="control-label col-sm-2" > name:</label>
+      <div class="col-sm-10">
+        <!-- [(ngModel)]="semester.semesterName"  -->
+        <input type="text" ngModel  [ngModel]="techModel.name"  name="name" required class="form-control" placeholder="Enter  name">
+      </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" > email:</label>
+        <div class="col-sm-10">
+          <!-- [(ngModel)]="semester.semesterName"  -->
+          <input type="email" [readonly]="techModel.id>0"     ngModel  [ngModel]="techModel.email"  name="email" required class="form-control" placeholder="Enter  email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" > age:</label>
+        <div class="col-sm-10">
+          <!-- [(ngModel)]="semester.semesterName"  -->
+          <input type="number" ngModel  [ngModel]="techModel.age"  name="age" required class="form-control" placeholder="Enter  age">
+        </div>
+      </div>
+      <div class="form-group" *ngIf="techModel.id==0">
+        <label class="control-label col-sm-2"  > password:</label>
+        <div class="col-sm-10">
+          <!-- [(ngModel)]="semester.semesterName"  -->
+          <input type="password" ngModel  [ngModel]="techModel.password"  name="password" required class="form-control" placeholder="Enter  password">
+        </div>
+      </div>
+      <div class="form-group"  *ngIf="techModel.id==0">
+        <label class="control-label col-sm-2" > confirm Password</label>
+        <div class="col-sm-10">
+          <!-- [(ngModel)]="semester.semesterName"  -->
+          <input type="password" ngModel  [ngModel]="techModel.confirmPassword"  name="confirmPassword" required class="form-control" placeholder="  confirm Password">
+        </div>
+      </div>
+
+     
+
+
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" >select subject :</label>
+        <div class="col-sm-10">
+            <select id="subjectid" class="form-control"  [ngModel]="techModel.subjectid" name="subjectid">
+                <option > select</option>
+                <option  *ngFor="let item of AllSubjectist" [ngValue]="item.id"> 
+                     {{item.name}}
+                </option>
+                
+                
+                    </select>
+        </div>
+      </div>
+
+      
+
+
+
+
+    
+                  
+
+
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" >image:</label>
+        <div class="col-sm-6">
+            <img   width="400px" height="400px" [src]="showinmageurl"/>
+            <span class="danger" >{{message}}</span>
+
+        </div>
+        <div class="col-sm-6">
+            <input  type="file" class="mt-2"   (change)="handleFileInput($event)" ngModel name="photofile" >
+
+        </div>
+      </div>
+
+
+    <div class="form-group"    *ngIf="techModel.id==0">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit"   [disabled]="f.invalid" class="btn btn-success">Add</button>
+      </div>
+  
+    </div>
+    <div class="form-group"  *ngIf="techModel.id >0">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success" [disabled]="f.invalid" >Update</button>
+      </div>
+    </div>
+  </form>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

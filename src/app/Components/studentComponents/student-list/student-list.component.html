@@ -1,0 +1,109 @@
+
+
+
+<div >
+    <!-- <button type="button" class="btn btn-outline-primary float-left m-2" data-toggle="modal" data-target="#exampleModal"
+    (click)=onaddclick()  data-backdrop="static" data-keybourd="false"> 
+        Add new subject
+      </button> -->
+      
+    </div>
+    <div  *ngIf="groupid" class="row border rounded border-default " style="margin:1%;">
+   
+  <div class="col-6">
+      <button class="btn btn-success form-control " (click)="assignstudentstogroup()">assign to  group</button> 
+    </div>
+    <div class="col-6">
+      <select id="selectedstudent"  class="form-control  " [(ngModel)]="selectedstudent" name="selectedstudent">
+        <option > select</option>
+        <option  *ngFor="let item of Allstudents" [ngValue]="item.id"> 
+             {{item.user.name}}
+  
+        </option>
+        
+        
+            </select>
+          </div>
+    </div>
+
+
+
+
+    <div class="row">
+    
+    
+        
+            <div class="card text-dark bg-default mb-3 mx-auto col-lg-3 col-sm-6" *ngFor="let item of List"   >
+                <div class="card-header">
+                   <h3 class="success">{{item.user.name}}</h3>
+
+                   
+                   
+                </div>
+    
+                <div  class="card-body align-items-center row">
+                <div class="col border">
+                    <img  class="rounded " width="100%" height="220px"  [src]="photosurl+item.user.photoFileName"/>
+                </div>
+      
+                </div>
+                <div class="card card-footer">
+
+                  <button class="btn btn-primary" (click)="OnclickEdit(item)"data-toggle="modal" data-target="#exampleModal"
+                  data-backdrop="static" data-keybourd="false">   Edit </button>
+                  
+              
+                  <button class="btn btn-danger"  (click)="OnclickDelete(item)">  Delete student </button>
+
+                  <button class="btn btn-warning" (click)="Removetudentstogroup(item)">remove  from this group</button> 
+
+              </div>
+            </div>
+          
+        
+        
+        
+        
+        
+            </div>
+    
+    
+    
+    
+            
+    
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centerd modal-xl" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="closeClick()"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <app-student-add-edit *ngIf="ActivateAddEditEmpComp" [selectedOne]="selectedOne" ></app-student-add-edit>
+            </div>
+         
+          </div>
+        </div>
+      </div>
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

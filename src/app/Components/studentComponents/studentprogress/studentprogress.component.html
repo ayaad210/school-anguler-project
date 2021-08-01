@@ -1,0 +1,71 @@
+
+      
+<div  style="margin: 2%;" *ngFor="let model of list">
+
+<h2>{{model.subject.name}}</h2>
+
+
+<div class="card col-lg-5"  *ngFor="let item of model.submodel" style="margin-bottom:4% ;margin-right:4% ;margin-left:4%">
+    <div class="row h4">
+        <div class="col-lg-8 text-primary">
+            {{item.task.name}}
+        </div>
+        <div class="col-lg-4 text-success">
+           {{item.task.total}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 h4">
+
+            <p class="h4">     {{item.task.type }}    in    {{item.task.teacher.subject.name}} </p>
+        </div>
+        <div class="col-lg-4">
+            <!-- mr: {{                        item.Task.Teacher.user.Name                }} -->
+        </div>
+    </div>
+    
+
+    <div class="row">
+
+
+        <div class="col-lg-12">
+          
+         <p >{{getdegree(item)}}</p>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 text-center">
+    
+            <meter min="0" [max]="item.task.total" [value]="item.ans.degree" [low]="item.ans.degree * .5"></meter>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <hr />
+

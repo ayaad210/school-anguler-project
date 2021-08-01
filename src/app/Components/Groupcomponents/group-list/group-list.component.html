@@ -1,0 +1,88 @@
+
+
+<div class="row align-items-center   " style="justify-content:center">
+<h2 class="text-primary text-center " >  <span class="text-dark">semester name</span> {{semestername}}</h2>
+</div>
+
+<div class="row ">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-primary float-left m-2" data-toggle="modal" data-target="#exampleModal"
+    (click)=onaddclick()  data-backdrop="static" data-keybourd="false"> 
+    <!-- عشان تتاكد انة لو ضغط برة البوب اب ميقفلهشاdata-backdrop="static" data-keybourd="false" -->
+        Add new Group
+      </button>
+      
+    </div>
+    <div class="row">
+       
+    
+        
+            <div class="card text-dark bg-default mb-3  col-lg-4" *ngFor="let item of List"   >
+                <div class="card-header">
+                   <h3 class="success">{{item.name}}</h3>
+                </div>
+                    <div class="card-body ">
+                 <div *ngIf="role=='admin'">
+
+            <button class="btn btn-primary" (click)="OnclickEdit(item)"data-toggle="modal" data-target="#exampleModal"
+            data-backdrop="static" data-keybourd="false">   Edit </button>
+            
+        
+            <button class="btn btn-danger"  (click)="OnclickDelete(item)">  Delete  </button>
+            <button class="btn btn-outline-info" routerLink='/StudentList' [queryParams]="{groupid:item.id,semesterid:semesterid}" >  students  </button>
+    
+           </div>     
+     
+        <button  *ngIf="role=='teachers'" class="btn btn-default" routerLink='/taskslist' [queryParams]="{groupid:item.id}" >  Tasks  </button>
+
+                </div>
+            </div>
+                
+        
+        
+        
+        
+        
+            </div>
+    
+    
+    
+    
+            
+    
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centerd modal-xl" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="closeClick()"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <app-group-add-edit *ngIf="ActivateAddEditEmpComp" [semestername]="semestername" [semesterid]="semesterid" [selectedOne]="selectedOne" ></app-group-add-edit>
+            </div>
+         
+          </div>
+        </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

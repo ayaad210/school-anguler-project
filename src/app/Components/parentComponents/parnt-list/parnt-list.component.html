@@ -1,0 +1,94 @@
+
+
+
+<div >
+    <!-- <button type="button" class="btn btn-outline-primary float-left m-2" data-toggle="modal" data-target="#exampleModal"
+    (click)=onaddclick()  data-backdrop="static" data-keybourd="false"> 
+        Add new subject
+      </button> -->
+      
+    </div>
+    <div class="row">
+      <div class="card text-dark bg-default mb-3 mx-auto col-lg-3 col-sm-6" *ngFor="let item of List"   >
+        <div class="card-header">
+                   <h3 class="success">{{item.user.name}}</h3>                                      
+                </div>
+    
+                <div class="card-body ">
+                    
+                <div>
+                    <img  width="220px" height="220px"  [src]="photosurl+item.user.photoFileName"/>
+                </div>
+      
+                </div>
+                <div class="card card-footer">
+
+                  <button class="btn btn-primary" (click)="OnclickEdit(item)"data-toggle="modal" data-target="#exampleModal"
+                  data-backdrop="static" data-keybourd="false">   Edit </button>                                
+                  <button class="btn btn-danger"  (click)="OnclickDelete(item)">  Delete  </button>
+                  <button class="btn btn-outline-secondary"  (click)="onCheldrnclick(item)">  CHELDERN  </button>
+
+              </div>
+            </div>
+          
+            
+        
+        
+        
+        
+            </div>
+    
+    
+    
+    
+            
+    
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centerd modal-xl" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="closeClick()"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <app-parnt-add-edit *ngIf="ActivateAddEditEmpComp" [selectedOne]="selectedOne" ></app-parnt-add-edit>
+            </div>
+         
+          </div>
+        </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <div class="card card border  border-info"  style="z-index: 2;position:fixed; top: 20%;width: 80%; padding: 1%; right: 10%; justify-content: center ; background-color:whitesmoke;"     *ngIf="activatecheldrencomponet" tabindex="-1">
+        <button type="button" (click)="closesemestersubjects()" class="close" data-dismiss="modal" aria-label="Close"
+        
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3  > children</h3>
+
+<app-parent-students *ngIf="activatecheldrencomponet" [parentid]="selectedprent.id"> </app-parent-students>
+
+</div>
+
+
+    
+    
+    
+    
+    

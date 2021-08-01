@@ -1,0 +1,52 @@
+<div class="row">
+
+    <div class="col lg-12"  *ngIf="role==='admin'">
+        <div class="row">
+            <div class="col lg-6">
+
+        <select id="selctedstudent" class="form-control" [(ngModel)]="selctedstudent" name="selctedstudent">
+            <option > select</option>
+            <option  *ngFor="let item of Allstudents" [ngValue]="item.id"> 
+                 {{item.user.name}}
+            </option>
+            
+            
+                </select>
+
+            </div>
+            <div class="col lg-6 " > 
+                </div>
+
+                <div class="col lg-6 " > 
+                    <button class="btn btn-primary" (click)="onaddclick()">+</button>
+                        </div>
+
+
+
+        </div>
+    </div>
+<div class="col lg-12 ">
+    <table class="table table-bordered border-primary">
+        <thead>
+    <th> student name</th>
+    <th> options</th>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of students">
+    <td > {{item.user.name}} </td>
+    <td> 
+         <button class="btn btn-danger" (click)="ondeleteclick(item.id)">-</button>   
+         <button class=" btn btn-outline-info" routerLink='/studentprogress' [queryParams]="{studentid:item.id }" >   prggress  </button>
+    </td>
+            </tr>
+        </tbody>
+
+      </table>
+  
+
+</div>
+
+
+    
+</div>
